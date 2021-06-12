@@ -64,4 +64,11 @@ class AuthController extends Controller
 			return $this->errorResponse('Your email or password is not valid');
 		}
 	}
+
+	public function logout(Request $request) {
+
+		$request->user()->tokens()->delete();
+
+		return $this->successResponse([], 'User Successfully Logout');
+	}
 }
