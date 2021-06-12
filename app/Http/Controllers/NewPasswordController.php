@@ -24,7 +24,7 @@ class NewPasswordController extends Controller
 		);
 
 		if($status != Password::RESET_LINK_SENT) {
-			errorResponse([], __($status) );
+			return $this->errorResponse( __($status) );
 		}
 
 		return $this->successResponse([], __($status) );
