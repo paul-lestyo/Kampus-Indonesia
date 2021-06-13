@@ -68,6 +68,6 @@ class BlogController extends Controller
     {
         $blog->delete();
 
-		return $this->successResponse([], 'Blog Successfully Updated');
+		return $this->successResponse([], 'Blog Successfully Deleted');
     }
 }

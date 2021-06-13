@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\NewPasswordController;
+use App\Http\Controllers\CollegeController;
+use App\Http\Controllers\MajorController;
 
 
 Route::post('register', [AuthController::class, 'register']);
@@ -18,8 +20,22 @@ Route::get('login/google/callback', [GoogleController::class, 'handleProviderCal
 Route::middleware('auth:sanctum')->group(function() {
 	Route::post('logout', [AuthController::class, 'logout']);
 
-	Route::resource('blog', BlogController::class)->except([
-		'create', 'edit'
+	Route::apiResource('blog', BlogController::class)->except([
+		'index', 'show'
 	]);
+	Route::apiResource('college', CollegeController::class)->except([
+		'index', 'show'
+	]);
+	Route::post('college/{college}/major/', [CollegeController::class, 'storeMajor']);
+	
+	Route::patch('college/{college}/major/{major}', [CollegeController::class, 'updateMajor']);
+	Route::delete('college/{college}/major/{major}', [CollegeController::class, 'destroyMajor']);
 });
 
+Route::get('blog', [BlogController::class, 'index']);
+Route::get('blog/{blog}', [BlogController::class, 'show']);
+
+Route::get('college', [CollegeController::class, 'index']);
+Route::get('college/{college}', [CollegeController::class, 'show']);
+
+Route::get('college/{college}/major/{major}', [CollegeController::class, 'showMajor']);
