@@ -9,7 +9,10 @@ use App\Models\User;
 class GoogleController extends Controller
 {
     public function redirectToProvider() {
-		return Socialite::driver('google')->stateless()->redirect();
+		$response = [
+			'redirectUrl' => Socialite::driver('google')->stateless()->redirect()->getTargetUrl(),
+		];
+		return $this->successResponse($response, "Redirected Login Google");
 	}
 
 	public function handleProviderCallback() {
@@ -21,10 +24,10 @@ class GoogleController extends Controller
 
 		$userCreated = User::firstOrCreate(
 			[
-				'email' => $user->getEmail(),
-				'password' => bcrypt(uniqid())
+				'email' => $user->getEmail()
 			],
 			[
+				'password' => bcrypt(uniqid()),
 				'email_verified_at' => now(),
 				'name' => $user->getName(),
 				'status' => true,
@@ -42,7 +45,7 @@ class GoogleController extends Controller
 		);
 		$response = [
 			'token' => $userCreated->createToken('paul_lestyo')->plainTextToken,
-			$userCreated
+			'user' => $userCreated
 		];
 		return $this->successResponse($response, "User Successfully Login");
 	}

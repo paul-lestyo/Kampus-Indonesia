@@ -9,7 +9,7 @@ use App\Http\Controllers\NewPasswordController;
 
 
 Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::post('forgot-password', [NewPasswordController::class, 'forgotPassword']);
 Route::post('reset-password', [NewPasswordController::class, 'reset']);
 Route::get('login/google', [GoogleController::class, 'redirectToProvider']);
