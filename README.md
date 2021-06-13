@@ -18,9 +18,14 @@ You can check the documentation in [here](https://documenter.getpostman.com/view
 ## Getting Started
 
 ```
-	git clone https://github.com/paul-lestyo/Kampus-Indonesia.git
-	cd Kampus-Indonesia
-	composer install
+# Clone Respository
+git clone https://github.com/paul-lestyo/Kampus-Indonesia.git
+
+# Go to directory
+cd Kampus-Indonesia
+
+# Install laravel
+composer install
 ```
 
 ## License
