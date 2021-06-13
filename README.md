@@ -17,7 +17,7 @@ You can check the documentation in [here](https://documenter.getpostman.com/view
 
 ## Getting Started
 
-```
+```bash
 # Clone Respository
 git clone https://github.com/paul-lestyo/Kampus-Indonesia.git
 
