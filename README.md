@@ -13,7 +13,7 @@ Simple Restfull API with Auth and CRUD Database
 
 ## Documentation API
 
-You can check the documentation in [here](https://documenter.getpostman.com/view/7774351/TzeTKAAN#488140cf-886f-45a4-b49b-a706a2e9968a)
+You can check the documentation in [here](https://documenter.getpostman.com/view/7774351/TzeTKAAN#488140cf-886f-45a4-b49b-a706a2e9968a) with Postman
 
 ## Getting Started
 
@@ -26,6 +26,22 @@ cd Kampus-Indonesia
 
 # Install laravel
 composer install
+
+# Copy .env
+cp .env.example .env
+
+# Then create database and edit database in .env
+# add Mail enviroment to send email when reset password
+# Then fill GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET GOOGLE_REDIRECT_URI with credentians google in .env
+
+# Generate Key
+php artisan key:generate
+
+# Migrate and seed database
+php artisan migrate --seed
+
+# Run Laravel 
+php artisan serve
 ```
 
 ## License
